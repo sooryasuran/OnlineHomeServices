@@ -1,0 +1,53 @@
+{% extends 'CUSTOMER/customerhome.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h3>Workers List</h3>
+<style>
+   .section-body {
+    display: flex;
+    justify-content: space-between;
+flex-direction: row;
+flex-wrap: wrap;
+  }
+   .invoice{
+ border:0px solid black;
+}
+</style>
+
+     <div class="section-body">
+           <div class="invoice">
+          <table class="table">
+  <thead>
+    <tr>
+       <th scope="col">SI No.</th>
+       <th scope="col">Worker Name</th>
+       <th scope="col">Date</th>
+       <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+        <th scope="col">Book Service</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in schedule %}
+    <tr>
+      <td scope="row"> {{forloop.counter}}</td>
+        <td>{{i.worker}}</td>
+       <td> {{i.date}}</td>
+      <td> {{i.start_time}}</td>
+      <td> {{i.end_time}}</td>
+        <td>
+             <label><a href="{% url 'bookserviceform' i.id %}"><button type="submit" class="btn btn-primary">Book Service</button></a></label>
+        </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+          </table>
+        </div>
+
+              </div>
+
+
+
+{% endblock %}
+     </div>

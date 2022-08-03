@@ -1,0 +1,56 @@
+
+{% extends 'ADMIN/adminhome.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h3>View Bill</h3>
+<style>
+   .section-body {
+    display: flex;
+    justify-content: space-between;
+flex-direction: row;
+flex-wrap: wrap;
+  }
+   .invoice{
+ border:0px solid black;
+}
+</style>
+
+     <div class="section-body">
+         <div class="invoice">
+              <div class="invoice-print">
+
+          <table class="table">
+  <thead>
+    <tr>
+       <th scope="col">SI No.</th>
+       <th scope="col">Customer Name</th>
+       <th scope="col">Date</th>
+       <th scope="col">Amount</th>
+        <th scope="col">Payment Status</th>
+        </tr>
+  </thead>
+  <tbody>
+  {% for i in bill %}
+    <tr>
+      <td scope="row"> {{forloop.counter}}</td>
+        <td>{{i.user}}</td>
+       <td> {{i.billdate}}</td>
+       <td> {{i.amount}}</td>
+       <td><button type="button" class="btn btn-primary">{% if i.status == 0 %}
+       <h5>Pending</h5>
+       {% elif i.status == 1 %}
+       <h5>Paid</h5>
+           {% endif %}</button></td>
+        </tr>
+  {% endfor %}
+  </tbody>
+          </table>
+        </div>
+
+              </div>
+
+
+
+{% endblock %}
+
+     </div>

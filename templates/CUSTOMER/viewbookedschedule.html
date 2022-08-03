@@ -1,0 +1,43 @@
+{% extends 'CUSTOMER/customerhome.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h3>Workers List</h3>
+<style>
+   .section-body {
+    display: flex;
+    justify-content: space-between;
+flex-direction: row;
+flex-wrap: wrap;
+  }
+   .invoice{
+ border:0px solid black;
+}
+</style>
+
+     <div class="section-body">
+           <div class="invoice">
+          <table class="table">
+  <thead>
+    <tr>
+       <th scope="col">SI No.</th>
+       <th scope="col">Name</th>
+       <th scope="col">Schedule</th>
+       <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in ab %}
+    <tr>
+      <td scope="row"> {{forloop.counter}}</td>
+        <td>{{i.username}}</td>
+       <td> {{i.schedule}}</td>
+      <td> {{i.status}}</td>
+      </tr>
+  {% endfor %}
+  </tbody>
+          </table>
+        </div>
+
+              </div>
+{% endblock %}
+     </div>

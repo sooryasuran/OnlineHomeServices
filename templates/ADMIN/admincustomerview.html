@@ -1,0 +1,44 @@
+{% extends 'ADMIN/adminhome.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="section-body">
+
+<div class="invoice">
+     <h2>Customers List</h2>
+              <div class="invoice-print">
+      <table width="100%" cellspacing="10" cellpadding="15">
+
+<!--              <div class="invoice-print">-->
+<!--                  <div class="col-lg-12">-->
+<!--                    <div class="invoice-title">-->
+
+    <tr bgcolor="lightblue">
+
+       <th>  SI No. </th>
+       <th>  Name </th>
+       <th>  Address </th>
+       <th>  Contact No. </th>
+       <th>  Pin Code. </th>
+
+    </tr>
+    <tr>
+         {% for i in csr %}
+      <td>{{forloop.counter}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.home_address}}</td>
+      <td>{{i.contact_no}}</td>
+      <td>{{i.pincode}}</td>
+    </tr>
+                        {% endfor %}
+                                                </table>
+    {% endblock %}
+
+                        </div>
+
+<!--                  </div>-->
+
+<!--              </div>-->
+<!--            </div>-->
+</div>
+</div>

@@ -1,0 +1,55 @@
+{% extends 'ADMIN/adminhome.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h3>View Bill</h3>
+<style>
+   .section-body {
+    display: flex;
+    justify-content: space-between;
+flex-direction: row;
+flex-wrap: wrap;
+  }
+   .invoice{
+ border:0px solid black;
+}
+</style>
+
+     <div class="section-body">
+<div class="invoice">
+          <table class="table">
+  <thead>
+    <tr>
+       <th scope="col">SI No.</th>
+       <th scope="col">Customer Name</th>
+       <th scope="col">Date</th>
+       <th scope="col">Category</th>
+        <th scope="col">Comments</th>
+        <th scope="col">Reply</th>
+        </tr>
+  </thead>
+  <tbody>
+  {% for i in af %}
+    <tr>
+      <td scope="row"> {{forloop.counter}}</td>
+       <td> {{i.customer}}</td>
+       <td> {{i.date}}</td>
+       <td> {{i.category}}</td>
+       <td> {{i.comments}}</td>
+       <td>
+            {% if i.reply == None %}
+            <button><a href = "{% url 'feedbackreply' i.id %}">Reply</a></button>
+            {% else %}
+            {{i.reply}}
+            {% endif %}
+        </td>
+       </tr>
+  {% endfor %}
+  </tbody>
+          </table>
+        </div>
+
+              </div>
+
+
+
+{% endblock %}

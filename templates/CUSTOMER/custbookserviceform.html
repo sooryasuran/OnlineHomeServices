@@ -1,0 +1,56 @@
+{% extends 'ADMIN/adminhome.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h3>Workers List</h3>
+<style>
+   .section-body {
+    display: flex;
+    justify-content: space-between;
+flex-direction: row;
+flex-wrap: wrap;
+  }
+   .invoice{
+ border:0px solid black;
+}
+</style>
+
+          <div class="section-body">
+
+              {% for i in cr %}
+
+           <div class="invoice">
+<div>
+    <img src="{{i.photo.url}}" width="300px" height="200px"></div><br>
+        <div>
+
+            <label style="color:blue; font-size:20px;">{{i.category}}</label>
+        </div>
+               <div>
+
+            <label style="color:blue; font-size:25px;">{{i.name}}</label >
+        </div>
+
+        <div>
+            <label style="color:blue; font-size:20px;">Area : </label>
+            <label style="color:blue; font-size:20px;">{{i.area}}</label>
+        </div>
+
+        <div>
+            <label style="color:blue; font-size:20px;">Ph.No : </label>
+            <label style="color:blue; font-size:20px;">{{i.contact_no}}</label>
+        </div>
+<div>
+                        <label><a href="{% url '' %}"><button type="submit" class="btn btn-primary">Book Service</button></a></label>
+
+
+
+
+                        </div>
+{% endfor %}
+              </div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'ADMIN/adminhome.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h3>Workers List</h3>
+<style>
+   .container {
+  background-color: blue
+  width: 100%;
+  height: auto;
+  margin: auto 0;
+  display: flex;
+  justify-content: left;
+}
+   .invoice{
+ border:0px solid black;
+}
+</style>
+<div class="main-content">
+{% for i in wr %}
+
+          <div class="container">
+
+           <div class="invoice">
+
+        <div>
+            <img src="{{i.photo.url}}" width="300px" height="200px">
+        </div><br>
+        <div>
+
+            <label style="color:blue; font-size:20px;">{{i.category}}</label>
+        </div>
+        <div>
+
+            <label style="color:blue; font-size:25px;">{{i.name}}</label>
+        </div>
+
+        <div>
+            <label style="color:blue; font-size:20px;">Area : </label>
+            <label style="color:blue; font-size:20px;">{{i.area}}</label>
+        </div>
+
+        <div>
+            <label style="color:blue; font-size:20px;">Ph.No : </label>
+            <label style="color:blue; font-size:20px;">{{i.contact_no}}</label>
+        </div>
+               <div>
+        <label><a href="{% url 'workerslistupdate' i.id %}"><button type="submit" class="btn btn-primary">Update</button></a></label>
+        <label><form action="{% url 'workerdelete' i.id %}" method="post">{% csrf_token %}
+        <input type="hidden" name="student" value="{{i.id}}"/>
+        <button type="submit" class="btn btn-primary">Delete</button></form></label>
+               </div>
+
+         </div>
+
+              </div>
+{% endfor %}
+
+</div>
+{% endblock %}
